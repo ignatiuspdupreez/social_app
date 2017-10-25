@@ -1,5 +1,7 @@
 class Profile::ProfileController < Profile::BaseController
-  def index
-  
+  def show
+    super
+    
+    #put your code here to expand the default show method
   end
 end

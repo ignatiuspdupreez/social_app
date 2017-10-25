@@ -9,4 +9,12 @@ Rails.application.routes.draw do
   resources :home
   resources :wall
   
+  # namespace :profile do
+  #   # get '/', to: 'profile#index'
+  #   resources :profile
+  # end
+  
+  scope :module => :profile do
+    resources :profile
+  end
 end

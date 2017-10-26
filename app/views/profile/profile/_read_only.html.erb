@@ -9,13 +9,13 @@
   <div class="title">
     <%= link_to(@user.display_name, profile_path(@user)) %>
   </div>
-  <div class="desc"><%= full_names %></div>
-  <div class="desc"><%= joined %></div>
-  <div class="desc"><%= birthday %></div>
-  <div class="desc"><%= birth_place %></div>
-  <div class="desc"><%= nation %></div>
+  <div class="desc"><%= present(@user).full_names %></div>
+  <div class="desc"><%= present(@user).joined %></div>
+  <div class="desc"><%= present(@user).birthday %></div>
+  <div class="desc"><%= present(@user).birth_place %></div>
+  <div class="desc"><%= present(@user).nation %></div>
 
 </div>
 <div class="bottom">
-  <%= buttons %>
+  <%= present(@user).buttons %>
 </div>

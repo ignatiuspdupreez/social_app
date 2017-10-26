@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   scope :module => :profile do
     resources :profile, except: [:index, :new, :create, :destroy]
   end
+  
+  scope :module => :friends do
+    get '/friends', to: 'friends#lists'
+  end
 end

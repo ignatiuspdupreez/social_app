@@ -11,4 +11,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  def name_to_display
+    return email.split('@')[0] if display_name.blank?
+    
+    display_name
+  end
 end

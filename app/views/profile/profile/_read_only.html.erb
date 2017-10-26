@@ -1,5 +1,9 @@
 <div class="avatar">
-  <%= image_tag @user.profile_picture %>
+  <% if @user.profile_picture.file.blank? %>
+      <%= image_tag 'nobody_m.original.jpg' %>
+  <% else %>
+      <%= image_tag @user.profile_picture.url %>
+  <% end %>
 </div>
 <div class="info">
   <div class="title">

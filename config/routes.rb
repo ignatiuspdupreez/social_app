@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   resources :home
   resources :wall
   
+  scope :module => :profile do
+    resources :profile, except: [:index, :new, :create, :destroy]
+  end
 end

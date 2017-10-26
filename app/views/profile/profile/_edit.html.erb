@@ -1,0 +1,27 @@
+<%= form_for @user, url: profile_path, validate: true do |f| %>
+    <div class="avatar">
+      <% if @user.profile_picture.file.blank? %>
+          <%= image_tag 'nobody_m.original.jpg' %>
+      <% else %>
+          <%= image_tag @user.profile_picture.url %>
+      <% end %>
+    </div>
+    <div class="info">
+      <%= f.file_field :profile_picture %>
+      <div class="title">
+        <%= f.text_field :display_name %>
+      </div>
+      <div class="desc"><%= f.text_field :first_name, placeholder: 'First name' %></div>
+      <div class="desc"><%= f.text_field :middle_name, placeholder: 'Middle name' %></div>
+      <div class="desc"><%= f.text_field :last_name, placeholder: 'Last name' %></div>
+      <div class="desc"><%= joined %></div>
+      <div class="desc"><%= f.date_field :date_of_birth, placeholder: 'Birth day' %></div>
+      <div class="desc"><%= f.text_field :place_of_birth, placeholder: 'Birth place' %></div>
+      <div class="desc"><%= f.text_field :nationality, placeholder: 'Nationality' %></div>
+
+    </div>
+    <div class="bottom">
+      <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i></button>
+      <%= link_to '<i class="fa fa-arrow-left"></i>'.html_safe, profile_path(@user), class: 'btn btn-primary btn-sm' %>
+    </div>
+<% end %>

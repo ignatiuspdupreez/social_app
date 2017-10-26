@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="card hovercard">
+        <div class="cardheader">
+
+        </div>
+        <div class="profile-content">
+          <%= render 'read_only' %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>profile.init(<%= @user.id %>)</script>

@@ -1,4 +1,5 @@
 module ProfileHelper
+  
   def full_names
     return '' if display_name?
     return 'your full name isn\'t set' if current_user_blank?(display)
@@ -26,8 +27,23 @@ module ProfileHelper
     "Nationality: #{nationality}"
   end
   
+  def buttons
+    if current_users_profile? && is_from_profile?
+      return link_to '<i class="fa fa-pencil"></i>'.html_safe,
+                     '',
+                     class: 'btn btn-primary btn-sm edit-profile'
+    end
+    
+    link_to '<i class="fa fa-eye"></i>'.html_safe, profile_path(@user), class: 'btn btn-primary btn-sm'
+  end
+  
   
   private
+  
+  def is_from_profile?
+    from == ProfileEnum::FROM::PROFILE
+  end
+  
   
   def display_name?
     false if display.blank? && !current_users_profile?
@@ -46,7 +62,7 @@ module ProfileHelper
   def current_users_profile?
     current_user.id == id
   end
-
+  
   def method_missing(*args, &block)
     @user.send(*args, &block)
   end

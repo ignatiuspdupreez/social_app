@@ -1,0 +1,17 @@
+<div class="avatar">
+  <%= image_tag @user.profile_picture %>
+</div>
+<div class="info">
+  <div class="title">
+    <%= link_to(@user.display_name, profile_path(@user)) %>
+  </div>
+  <div class="desc"><%= full_names %></div>
+  <div class="desc"><%= joined %></div>
+  <div class="desc"><%= birthday %></div>
+  <div class="desc"><%= birth_place %></div>
+  <div class="desc"><%= nation %></div>
+
+</div>
+<div class="bottom">
+  <%= buttons %>
+</div>

@@ -49,11 +49,12 @@ class UserPresenter < BasePresenter
                      user_id: user.id
     end
     
-    link_to '<i class="fa fa-eye"></i>'.html_safe, profile_path(user), class: 'btn btn-primary btn-sm'
+    link_to '<i class="fa fa-eye"></i>'.html_safe, profile_path(user), class: 'btn btn-success btn-sm'
   end
   
   
   private
+  
   
   def is_from_profile?
     user.from == ProfileEnum::FROM::PROFILE

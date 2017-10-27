@@ -16,4 +16,12 @@ Rails.application.routes.draw do
   scope :module => :friends do
     get '/friends', to: 'friends#lists'
   end
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :relationships,       only: [:create, :destroy]
 end

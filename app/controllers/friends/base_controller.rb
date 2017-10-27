@@ -8,4 +8,8 @@ class Friends::BaseController < ApplicationController
   
   end
   
+  def follow
+  
+  end
+  
 end

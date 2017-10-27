@@ -7,7 +7,11 @@ class Friends::Lists
   end
 
   def followers
-    @followers ||= user.folowees
+    @followers ||= user.followers
+  end
+  
+  def following
+    @following ||= user.following
   end
   
   def all_users

@@ -10,15 +10,11 @@
                 </div>
                 <div class="profile-content">
                   <div class="avatar">
-                    <% if user.profile_picture.file.blank? %>
-                        <%= image_tag 'nobody_m.original.jpg' %>
-                    <% else %>
-                        <%= image_tag user.profile_picture.url %>
-                    <% end %>
+                    <%= presented_user.avatar %>
                   </div>
                   <div class="info">
                     <div class="title">
-                      <%= link_to(user.name_to_display, profile_path(user)) %>
+                      <%= presented_user.display_title %>
                     </div>
                     <div class="desc"><%= presented_user.full_names %></div>
                     <div class="desc"><%= presented_user.joined %></div>
@@ -33,7 +29,6 @@
                 </div>
               </div>
             </div>
-            <script>profile.init(<%= user.id %>)</script>
         <% end %>
     <% end %>
   </div>

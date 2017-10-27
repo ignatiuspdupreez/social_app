@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <% users.each do |user| %>
+        <% present(user) do |presented_user| %>
+            <div class="col-sm-3">
+
+              <div class="card hovercard">
+                <div class="cardheader">
+
+                </div>
+                <div class="profile-content">
+                  <div class="avatar">
+                    <%= presented_user.avatar %>
+                  </div>
+                  <div class="info">
+                    <div class="title">
+                      <%= presented_user.display_title %>
+                    </div>
+                    <div class="desc"><%= presented_user.full_names %></div>
+                    <div class="desc"><%= presented_user.joined %></div>
+                    <div class="desc"><%= presented_user.birthday %></div>
+                    <div class="desc"><%= presented_user.birth_place %></div>
+                    <div class="desc"><%= presented_user.nation %></div>
+
+                  </div>
+                  <div class="bottom">
+                    <% if current_user.following? user %>
+                        <%= form_for(current_user.active_relationships.find_by(followed_id: user.id), html: {method: :delete}) do |f| %>
+                            <%= presented_user.buttons %>
+                            <%= f.submit '-', class: 'btn btn-danger' %>
+                        <% end %>
+                    <% else %>
+                        <%= form_for(current_user.active_relationships.build) do |f| %>
+                            <%= presented_user.buttons %>
+                            <%= hidden_field_tag :followed_id, user.id %>
+                            <%= f.submit '+', class: 'btn btn-primary' %>
+                        <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">All users</a></li>
+        <li><a href="#tabs-2">Following</a></li>
+        <li><a href="#tabs-3">Followers</a></li>
+      </ul>
+      <div id="tabs-1">
+        <%= render 'users', users: @lists.all_users %>
+      </div>
+      <div id="tabs-2">
+        <%= render 'users', users: @lists.following %>
+      </div>
+      <div id="tabs-3">
+        <%= render 'users', users: @lists.followers %>
+      </div>
+    </div>
+  </div>
+</div>

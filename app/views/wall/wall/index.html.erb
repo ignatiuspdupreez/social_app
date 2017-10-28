@@ -1,0 +1,30 @@
+<div class="col-sm-12">
+  <%= form_for current_user.posts.build do |f| %>
+      <div class="col-sm-12">
+        <%= f.text_area :content, placeholder: 'Type your post here', class: 'form-control' %>
+      </div>
+      <div class="col-sm-12">
+        <%= f.submit '+', class: 'btn btn-primary form-control' %>
+      </div>
+  <% end %>
+</div>
+<div class="col-sm-12">
+  <div class="space"></div>
+</div>
+<% @posts.each do |post| %>
+    <% present(post.user) do |presented_user| %>
+        <div class="item">
+          <div class="image">
+            <div>
+              <%= presented_user.avatar %>
+            </div>
+          </div>
+          <div class="details">
+            <div>
+              <h1><%= presented_user.display_title %></h1>
+              <p><%= post.content %></p>
+            </div>
+          </div>
+        </div>
+    <% end %>
+<% end %>

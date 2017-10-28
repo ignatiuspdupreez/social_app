@@ -1,19 +1,19 @@
 class Profile::ProfileController < Profile::BaseController
   def show
     super
-    
-    #put your code here to expand the default show action
+  
+    #extend show action here or remove supper to override
   end
   
   def edit
     super
-    
-    #put your code here to extend the default edit action
+  
+    #extend edit action here or remove supper to override
   end
   
   def create
     super
-    
-    #put your code here to extend the default create action
+  
+    #extend create action here or remove supper to override
   end
 end

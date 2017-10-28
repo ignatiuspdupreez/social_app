@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  authenticated do
-    root to: "wall#index", as: :authenticated_root
-  end
-  root to: 'home#index'
   
   resources :home
-  resources :wall
+  
+  scope :module => :wall do
+    authenticated do
+      root to: "wall#index", as: :authenticated_root
+    end
+    
+    resources :wall, only: [:index]
+  end
+
+  root to: 'home#index'
   
   scope :module => :profile do
     resources :profile, except: [:index, :new, :create, :destroy]
@@ -16,12 +21,12 @@ Rails.application.routes.draw do
   scope :module => :friends do
     get '/friends', to: 'friends#lists'
   end
-
-  resources :users do
-    member do
-      get :following, :followers
-    end
+  
+  scope :module => :relationships do
+    resources :relationships, only: [:create, :destroy]
   end
-
-  resources :relationships,       only: [:create, :destroy]
+  
+  scope :module => :posts do
+    resources :posts, only: [:create, :destroy]
+  end
 end

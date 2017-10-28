@@ -1,4 +1,4 @@
-class RelationshipsController < ApplicationController
+class Relationships::BaseController < ApplicationController
   def create
     current_user.active_relationships.build(followed_id: params[:followed_id]).save
     
@@ -7,8 +7,7 @@ class RelationshipsController < ApplicationController
   
   def destroy
     current_user.active_relationships.find_by(id: params[:id]).destroy
-
+    
     redirect_to '/friends'
   end
-  
 end
